@@ -14,13 +14,14 @@ public class ROalgorithm
         if (s1.equals(s2)) 
             return 1.0d;
 
-        List<String> matches = getMatchList(s1, s2);
-        int sum_of_matches = 0;
+        List<String> match = getMatchList(s1, s2);
+        int Km = 0;
 
-        for (String match : matches)
-            sum_of_matches += match.length();
+        for (String match_partial : match)
+            Km += match_partial.length();
 
-        return 2.0d * sum_of_matches / (s1.length() + s2.length());
+        // Dro Return
+        return 2.0d * Km / (s1.length() + s2.length());
     }
 
     private static List<String> getMatchList(final String s1, final String s2)

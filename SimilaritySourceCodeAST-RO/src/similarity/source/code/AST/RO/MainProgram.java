@@ -1,68 +1,99 @@
-package similarity.source.code.AST.RO;
 /**
- *
  * @author Assyatier21
  */
+package similarity.source.code.AST.RO;
+
+
 public class MainProgram 
 {
     public static void main(String[] args) throws Exception
     {
         String mainDoc =
-        "import java.util.Scanner;\n" +
-        "public class testfile {\n" +
+        "Day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']\n" +
+        "num = int(input(\"Insert num of Day = \"))\n" +
         "\n" +
-        "	public static void main(String[] args) {\n" +
-        "\n" +
-        "for( int j=1; j<=7; j++) {\n" +
-        "			System.out.println(\"\");\n" +
-        "			for(int i=1; i<=j; i++) {\n" +
-        "				System.out.print(\"*\");\n" +
-        "			}\n" +
-        "			\n" +
-        "		}\n" +
-        "}\n" +
-        "}";
+        "if (num >= 1) and (num <= 7):\n" +
+        "    print 'The Day number is ' + str(num) + 'and the Name is ' +  hari[bil - 1]\n" +
+        "else:\n" +
+        "    print 'The day is not available'";
        
         String duplicateDoc =
-        "package com.company;\n" +
-        "import java.util.Scanner;\n" +
-        "public class law{\n" +
-        "	public static void main(String[ args) {\n" +
-        "		System.out.print(\"Masukkan angka : \");\n" +
-        "		Scanner ss = new Scanner(System.in);\n" +
-        "			Int l = ss.nextInt();\n" +
-        "			for( int k = 1; k <= 1; k++) {\n" +
-        "				System.out.println(\"\");\n" +
-        "				for(int i = 1; I<=k;i++) {\n" +
-        "				System.out.print(\"*\");\n" +
-        "				}\n" +
-        "			}\n" +
-        "	}\n" +
-        "}";
+        "hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']\n" +
+        "\n" +
+        "bil = int(input(\"Masukkan angka untuk menentukan hari = \"))\n" +
+        "\n" +
+        "if (bil >= 1) and (bil <= 7):\n" +
+        "    print 'Hari ke ', bil, ' adalah hari ', hari[bil - 1]\n" +
+        "else:\n" +
+        "    print 'Hari tidak tersedia'";
         
 //        String mainDoc =
-//        "081807111216172407130411182327283435374148162224283536424345468121416212229303181011131620121819222330313940813151618212412181922233031404181315161821231218192223303140418131516182123121819222330314041";
+//        "import java.util.Scanner;\n" +
+//        "public class testfile {\n" +
+//        "\n" +
+//        "	public static void main(String[] args) {\n" +
+//        "\n" +
+//        "for( int j=1; j<=7; j++) {\n" +
+//        "			System.out.println(\"\");\n" +
+//        "			for(int i=1; i<=j; i++) {\n" +
+//        "				System.out.print(\"*\");\n" +
+//        "			}\n" +
+//        "			\n" +
+//        "		}\n" +
+//        "}\n" +
+//        "}";
 //       
 //        String duplicateDoc =
-//        "081807111216172407130411182327283435374148161921253233394042439131517192027282981011131618212325271218192223303139498131516182124272931331218192223303140418131516182124272931341218192223303140418131516182125283032361218192223303140418121819222330313940400";
+//        "package com.company;\n" +
+//        "import java.util.Scanner;\n" +
+//        "public class law{\n" +
+//        "	public static void main(String[ args) {\n" +
+//        "		System.out.print(\"Masukkan angka : \");\n" +
+//        "		Scanner ss = new Scanner(System.in);\n" +
+//        "			Int l = ss.nextInt();\n" +
+//        "			for( int k = 1; k <= 1; k++) {\n" +
+//        "				System.out.println(\"\");\n" +
+//        "				for(int i = 1; I<=k;i++) {\n" +
+//        "				System.out.print(\"*\");\n" +
+//        "				}\n" +
+//        "			}\n" +
+//        "	}\n" +
+//        "}";
         
         try
         {
+//            prepText process = new prepText();
+//            String mainDocFiltered = process.ppTextwithAST(mainDoc);
+//            String duplicateDocFiltered = process.ppTextwithAST(duplicateDoc);
+//
+//            tokenizeCode next = new tokenizeCode();
+//            String mainDocTokenized = next.tokenizerJava(mainDocFiltered);
+//            String duplicateDocTokenized = next.tokenizerJava(duplicateDocFiltered);
+//
+//            System.out.println("Main Doc Token :\n" + mainDocTokenized);
+//            System.out.println("");
+//            System.out.println("Duplicate Doc Token:\n" + duplicateDocTokenized);
+//            System.out.println("");
+//            ROalgorithm algorithm = new ROalgorithm();
+//            double percentage = algorithm.similarity(mainDocTokenized, duplicateDocTokenized);
+//            System.out.println("Percentage of Similarity : " + percentage);
+            
             prepText process = new prepText();
             String mainDocFiltered = process.ppTextwithAST(mainDoc);
             String duplicateDocFiltered = process.ppTextwithAST(duplicateDoc);
 
             tokenizeCode next = new tokenizeCode();
-            String mainDocTokenize = next.tokenizer(mainDocFiltered);
-            String duplicateDocTokenize = next.tokenizer(duplicateDocFiltered);
+            String mainDocTokenized = next.tokenizerPython(mainDocFiltered);
+            String duplicateDocTokenized = next.tokenizerPython(duplicateDocFiltered);
 
-            System.out.println("Main Doc Token :\n" + mainDocTokenize);
+            System.out.println("Main Doc Token :\n" + mainDocTokenized);
             System.out.println("");
-            System.out.println("Duplicate Doc Token:\n" + duplicateDocTokenize);
+            System.out.println("Duplicate Doc Token:\n" + duplicateDocTokenized);
             System.out.println("");
             ROalgorithm algorithm = new ROalgorithm();
-            double percentage = algorithm.similarity(mainDocTokenize, duplicateDocTokenize);
+            double percentage = algorithm.similarity(mainDocTokenized, duplicateDocTokenized);
             System.out.println("Percentage of Similarity : " + percentage);
+            
         } 
         catch (Exception e)
         {
