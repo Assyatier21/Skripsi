@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.text.DecimalFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
@@ -22,8 +23,13 @@ public class SimilarityGUI extends javax.swing.JFrame {
     /**
      * Creates new form SimilarityGUI
      */ 
+    private static final DecimalFormat df = new DecimalFormat("0.00000000");
+    private double[] percentage = new double[4];
+    private double[] percentageWOAST = new double[4];
     private String[] rawSC = new String[5];
+    private String[] rawSCWOAST = new String[5];
     private String pathDC = "";
+    
     
     public SimilarityGUI() {
         initComponents();
@@ -298,9 +304,10 @@ public class SimilarityGUI extends javax.swing.JFrame {
         File folder = new File(pathDC);
         File[] listOfFiles = folder.listFiles();
         String PreProcessingAllText = "";
+        String PreProcessingAllTextWOAST = "";
         String TokenizingAllText = "";
         int i = 1;
-            
+        int k = 0;
         
         // Reading File
         try
@@ -325,7 +332,6 @@ public class SimilarityGUI extends javax.swing.JFrame {
 
                         // Insert Duplicate Doc Into Array Global
                         rawSC[i] = sb.toString();
-                        System.out.println(i);
                         i++;
                     }
                     catch(Exception e)
@@ -339,10 +345,17 @@ public class SimilarityGUI extends javax.swing.JFrame {
             tokenizeCode next = new tokenizeCode();
             ROalgorithm algorithm = new ROalgorithm();
             
+            // Copying Element From Input Files
+            for (int j = 0; j < rawSC.length; j++) 
+                rawSCWOAST[j] = rawSC[j];
+            
+            // Pre-Processing Source Code
             rawSC[0] = process.ppTextwithAST(rawSC[0]);
-            PreProcessingAllText += "\n---------------------------MAIN DOCUMENT---------------------------------------\n";
+            rawSCWOAST[0] = process.ppTextnoAST(rawSCWOAST[0]);
+            
+            PreProcessingAllText += "\n--------------------------------MAIN DOCUMENT--------------------------------------\n";
             PreProcessingAllText += rawSC[0];
-            PreProcessingAllText += "\n----------------------------------------------------------------------\n";
+            PreProcessingAllText += "\n------------------------------------------------------------------------------------\n";
             
             rawSC[0] = next.tokenizerJava(rawSC[0]);
             TokenizingAllText += "\n------------------------MAIN DOCUMENT-------------------------\n";
@@ -355,16 +368,20 @@ public class SimilarityGUI extends javax.swing.JFrame {
                 try
                 {
                     rawSC[j] = process.ppTextwithAST(rawSC[j]);
-                    PreProcessingAllText += "\n-----------------------DUPLICATED-" + j + "-----------------------------------\n";
+                    rawSCWOAST[j] = process.ppTextnoAST(rawSCWOAST[j]);
+                    
+                    PreProcessingAllText += "\n-------------------------------DUPLICATED-" + j + "-----------------------------------------\n";
                     PreProcessingAllText += rawSC[j];
-                    PreProcessingAllText += "\n----------------------------------------------------------------------\n";
+                    PreProcessingAllText += "------------------------------------------------------------------------------------\n";
                     
                     rawSC[j] = next.tokenizerJava(rawSC[j]);
-                    TokenizingAllText += "\n----------------------DUPLICATED-" + j + "----------------------------\n";
+                    TokenizingAllText += "\n------------------------DUPLICATED-" + j + "--------------------------\n";
                     TokenizingAllText += rawSC[j];
                     TokenizingAllText += "\n--------------------------------------------------------------\n";
                     
-                    double percentage = algorithm.similarity(rawSC[0], rawSC[j]);
+                    percentage[k] = Double.valueOf(df.format(algorithm.similarity(rawSC[0], rawSC[j])));
+                    percentageWOAST[k] = Double.valueOf(df.format(algorithm.similarity(rawSCWOAST[0], rawSCWOAST[j])));
+                    k++;
                     
                 } 
                 catch (Exception e)
@@ -379,6 +396,15 @@ public class SimilarityGUI extends javax.swing.JFrame {
         }
         preprocessedSC.setText(PreProcessingAllText);
         tokenizedSC.setText(TokenizingAllText);
+        
+        // Insert Value of Similarity 
+        for (int j = 0; j < 4; j++) 
+        { 
+            percentTable.setValueAt(percentage[j], 0, (j + 1));
+            percentTable.setValueAt(percentageWOAST[j], 1, (j + 1));
+        }
+       
+        
     }//GEN-LAST:event_runDetectionActionPerformed
 
     /**
