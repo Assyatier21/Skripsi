@@ -25,19 +25,6 @@ public class tokenizeCode
           }
           return tokenAll;
     }
-    public static String tokenizerPython(String code)
-    {
-        ANTLRInputStream in = new ANTLRInputStream(code);
-        PythonLexer lexer = new PythonLexer(in);
-        List<? extends Token> tokenList = new ArrayList<>();
-        tokenList = lexer.getAllTokens();
-        String tokenAll = "";
-        for(Token token : tokenList){
-        //  System.out.print("Token ID : " + token.getText() + " : " + token.getType() + "\n");
-            tokenAll += String.valueOf(token.getType());
-        }
-        return tokenAll;
-    }
 }
 
 

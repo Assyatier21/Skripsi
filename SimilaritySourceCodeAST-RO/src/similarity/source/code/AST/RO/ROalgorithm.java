@@ -39,6 +39,7 @@ public class ROalgorithm
             String endsource = s1.substring(s1.indexOf(match) + match.length());
             String endtarget = s2.substring(s2.indexOf(match) + match.length());
             // Get Longest Substring Right of Anchor
+           
             List<String> endqueue = getMatchList(endsource, endtarget);
 
             list.add(match);
@@ -67,7 +68,7 @@ public class ROalgorithm
             }
         }
         
-        System.out.println(longestsubstring + "\n----------");
+
         return longestsubstring;
     }
 }

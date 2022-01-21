@@ -1,19 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Nama  : Muhammad Sholeh
+ * NIM   : 09021281823172
+ * Informatika Reguler 2018
  */
 package similarity.source.code.AST.RO;
 
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.text.DecimalFormat;
-import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import org.apache.commons.io.FilenameUtils;
 
 /**
@@ -50,7 +47,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
         DocSCmain = new javax.swing.JLabel();
         duplicateSourceCodeLabel = new javax.swing.JLabel();
         mainDocFile = new javax.swing.JButton();
-        DuplicateFileFolder = new javax.swing.JButton();
+        duplicateFileFolder = new javax.swing.JButton();
         mainDocument = new javax.swing.JLabel();
         processingLabel = new javax.swing.JLabel();
         folderPath = new javax.swing.JLabel();
@@ -85,10 +82,10 @@ public class SimilarityGUI extends javax.swing.JFrame {
             }
         });
 
-        DuplicateFileFolder.setText("Choose File....");
-        DuplicateFileFolder.addActionListener(new java.awt.event.ActionListener() {
+        duplicateFileFolder.setText("Choose File....");
+        duplicateFileFolder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DuplicateFileFolderActionPerformed(evt);
+                duplicateFileFolderActionPerformed(evt);
             }
         });
 
@@ -178,7 +175,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(runDetection, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DuplicateFileFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(duplicateFileFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mainDocFile, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +233,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(mainDocFile)
                                 .addGap(18, 18, 18)
-                                .addComponent(DuplicateFileFolder)
+                                .addComponent(duplicateFileFolder)
                                 .addGap(59, 59, 59)
                                 .addComponent(runDetection, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(53, 53, 53)
@@ -249,7 +246,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DuplicateFileFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DuplicateFileFolderActionPerformed
+    private void duplicateFileFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duplicateFileFolderActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser(); 
         chooser.setCurrentDirectory(new java.io.File("."));
@@ -274,7 +271,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
         else 
             System.out.println("No Selection!");
         
-    }//GEN-LAST:event_DuplicateFileFolderActionPerformed
+    }//GEN-LAST:event_duplicateFileFolderActionPerformed
 
     private void mainDocFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainDocFileActionPerformed
         // TODO add your handling code here:
@@ -468,7 +465,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AppTitle;
     private javax.swing.JLabel DocSCmain;
-    private javax.swing.JButton DuplicateFileFolder;
+    private javax.swing.JButton duplicateFileFolder;
     private javax.swing.JLabel duplicateSourceCodeLabel;
     private javax.swing.JLabel folderPath;
     private javax.swing.JScrollPane jScrollPane1;
