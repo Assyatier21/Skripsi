@@ -12,7 +12,9 @@ import java.io.FileReader;
 import java.text.DecimalFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -256,45 +258,65 @@ public class SimilarityGUI extends javax.swing.JFrame {
         chooser.setAcceptAllFileFilterUsed(false);
         
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) { 
-          folderPath.setText(chooser.getSelectedFile().toString());
-          pathDC = chooser.getSelectedFile().toString();
+          
+          File folder = new File(chooser.getSelectedFile().toString());
+          File[] listOfFiles = folder.listFiles();
+          
+          if(listOfFiles.length == 4)
+          {
+            folderPath.setText(chooser.getSelectedFile().toString());
+            pathDC = chooser.getSelectedFile().toString();
+          }
+          else{
+              JOptionPane.showMessageDialog(null, "The Total File Does Not Match The Format!");
+          }
         }
         else 
-            System.out.println("No Selection ");
+            System.out.println("No Selection!");
         
     }//GEN-LAST:event_DuplicateFileFolderActionPerformed
 
     private void mainDocFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainDocFileActionPerformed
         // TODO add your handling code here:
+        
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) 
         {
             File selectedFile = fileChooser.getSelectedFile();
-            mainDocument.setText(fileChooser.getSelectedFile().toString());
-            
-            try
+            String mainExt = FilenameUtils.getExtension(selectedFile.getName());
+
+            if(mainExt.equals("java"))
             {
-                FileReader fr = new FileReader(selectedFile);
-                BufferedReader br = new BufferedReader(fr);
-                StringBuffer sb = new StringBuffer();
+                mainDocument.setText(fileChooser.getSelectedFile().toString());
                 
-                String content = "";
-                
-                while((content = br.readLine()) != null)
+                // Insert Line by Line Code Into Array
+                try
                 {
-                    sb.append(content);
-                    sb.append("\n");
+                    FileReader fr = new FileReader(selectedFile);
+                    BufferedReader br = new BufferedReader(fr);
+                    StringBuffer sb = new StringBuffer();
+
+                    String content = "";
+
+                    while((content = br.readLine()) != null)
+                    {
+                        sb.append(content);
+                        sb.append("\n");
+                    }
+                    fr.close();
+
+
+                    // Insert Main Doc Into Array Global
+                    rawSC[0] = sb.toString();
                 }
-                fr.close();
-                
-                
-                // Insert Main Doc Into Array Global
-                rawSC[0] = sb.toString();
+                catch(Exception e)
+                {
+                    e.printStackTrace();  
+                }
             }
-            catch(Exception e)
-            {
-                e.printStackTrace();  
+            else{
+                JOptionPane.showMessageDialog(null, "Wrong Extension");
             }
         }
     }//GEN-LAST:event_mainDocFileActionPerformed
@@ -303,8 +325,8 @@ public class SimilarityGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         File folder = new File(pathDC);
         File[] listOfFiles = folder.listFiles();
+        
         String PreProcessingAllText = "";
-        String PreProcessingAllTextWOAST = "";
         String TokenizingAllText = "";
         int i = 1;
         int k = 0;
@@ -355,7 +377,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
             
             PreProcessingAllText += "\n--------------------------------MAIN DOCUMENT--------------------------------------\n";
             PreProcessingAllText += rawSC[0];
-            PreProcessingAllText += "\n------------------------------------------------------------------------------------\n";
+            PreProcessingAllText += "------------------------------------------------------------------------------------\n";
             
             rawSC[0] = next.tokenizerJava(rawSC[0]);
             TokenizingAllText += "\n------------------------MAIN DOCUMENT-------------------------\n";
@@ -432,6 +454,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SimilarityGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

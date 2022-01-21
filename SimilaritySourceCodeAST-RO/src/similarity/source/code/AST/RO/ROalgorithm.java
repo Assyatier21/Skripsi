@@ -16,11 +16,11 @@ public class ROalgorithm
 
         List<String> match = getMatchList(s1, s2);
         int Km = 0;
-
+        
         for (String match_partial : match)
             Km += match_partial.length();
 
-        // Dro Return
+        // DRO Return
         return 2.0d * Km / (s1.length() + s2.length());
     }
 
@@ -33,10 +33,12 @@ public class ROalgorithm
         {
             String frontsource = s1.substring(0, s1.indexOf(match));
             String fronttarget = s2.substring(0, s2.indexOf(match));
+            // Get Longest Substring Left of Anchor
             List<String> frontqueue = getMatchList(frontsource, fronttarget);
 
             String endsource = s1.substring(s1.indexOf(match) + match.length());
             String endtarget = s2.substring(s2.indexOf(match) + match.length());
+            // Get Longest Substring Right of Anchor
             List<String> endqueue = getMatchList(endsource, endtarget);
 
             list.add(match);
@@ -51,6 +53,7 @@ public class ROalgorithm
         int longest = 0;
         String longestsubstring = "";
 
+        // Loop Every Character To Find Longest Substring
         for (int i = 0; i < s1.length(); i++) 
         {
             for (int j = i + 1; j <= s1.length(); j++) 
@@ -63,7 +66,8 @@ public class ROalgorithm
                 }
             }
         }
-
+        
+        System.out.println(longestsubstring + "\n----------");
         return longestsubstring;
     }
 }

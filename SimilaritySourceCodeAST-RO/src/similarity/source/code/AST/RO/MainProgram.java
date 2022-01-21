@@ -3,44 +3,51 @@
  */
 package similarity.source.code.AST.RO;
 
+import java.util.Scanner;
+
 
 public class MainProgram 
 {
+    
     public static void main(String[] args) throws Exception
     {
-        
         String mainDoc =
         "import java.util.Scanner;\n" +
-        "public class testfile {\n" +
-        "\n" +
-        "	public static void main(String[] args) {\n" +
-        "\n" +
-        "for( int j=1; j<=7; j++) {\n" +
-        "			System.out.println(\"\");\n" +
-        "			for(int i=1; i<=j; i++) {\n" +
-        "				System.out.print(\"*\");\n" +
-        "			}\n" +
-        "			\n" +
-        "		}\n" +
-        "}\n" +
-        "}";
+"\n" +
+"public class T1 {\n" +
+"	public static void main(String[] args) {\n" +
+"		Scanner input = new Scanner(System.in);\n" +
+"		System.out.print(\"Enter the radius and length of a cylinder: \");\n" +
+"		double radius = input.nextDouble();\n" +
+"		double length = input.nextDouble();\n" +
+"\n" +
+"		double area = radius * radius * 3.14159;\n" +
+"		double volume = area * length;\n" +
+"\n" +
+"		System.out.println(\"The area is \" + area);\n" +
+"		System.out.println(\"The volume of the cylinder is \" + volume);\n" +
+"	}\n" +
+"\n" +
+"}";
        
         String duplicateDoc =
-        "package com.company;\n" +
-        "import java.util.Scanner;\n" +
-        "public class law{\n" +
-        "	public static void main(String[ args) {\n" +
-        "		System.out.print(\"Masukkan angka : \");\n" +
-        "		Scanner ss = new Scanner(System.in);\n" +
-        "			Int l = ss.nextInt();\n" +
-        "			for( int k = 1; k <= 1; k++) {\n" +
-        "				System.out.println(\"\");\n" +
-        "				for(int i = 1; I<=k;i++) {\n" +
-        "				System.out.print(\"*\");\n" +
-        "				}\n" +
-        "			}\n" +
-        "	}\n" +
-        "}";
+        "// Modification - 1\n" +
+"// Percentage Change : 25%\n" +
+"\n" +
+"import java.util.Scanner;\n" +
+"\n" +
+"public class M1T1 {\n" +
+"	public static void main(String[] args) {\n" +
+"		Scanner in = new Scanner(System.in);\n" +
+"\n" +
+"		double radius = in.nextDouble();\n" +
+"		double length = in.nextDouble();\n" +
+"\n" +
+"		System.out.println(\"Surface Area : \" + (radius * radius * 3.14159));\n" +
+"		System.out.println(\"Volume of the cylinder : \" + (radius * radius * 3.14159 * length));\n" +
+"	}\n" +
+"\n" +
+"}";
         
         try
         {
