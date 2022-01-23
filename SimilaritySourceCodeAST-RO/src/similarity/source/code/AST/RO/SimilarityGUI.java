@@ -15,7 +15,7 @@ import org.apache.commons.io.FilenameUtils;
 
 /**
  *
- * @author User
+ * @author Muhammad Sholeh
  */
 public class SimilarityGUI extends javax.swing.JFrame {
 
@@ -64,7 +64,6 @@ public class SimilarityGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Source Code Similarity AST-RO");
-        setPreferredSize(new java.awt.Dimension(1500, 800));
 
         AppTitle.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         AppTitle.setText("Source Code Similarity Detector");

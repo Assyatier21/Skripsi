@@ -17,3 +17,8 @@ public class T4 {
 	}
 
 }
+// T4		: 107 Token
+// M1T4 	: 83 Token (23%)
+// M2T4		: 172 Token (59%)
+// M3T4		: 84 Token Changed (78%)
+// M4T4		: 107 Token Same (100%)
