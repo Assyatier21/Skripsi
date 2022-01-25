@@ -267,10 +267,10 @@
                   <Data value="  Dengan AST"/>
                   <Data value="  Tanpa AST"/>
                 </Column>
-                <Column editable="false" title="Modifikasi 1" type="java.lang.String"/>
-                <Column editable="false" title="Modifikasi 2" type="java.lang.String"/>
-                <Column editable="false" title="Modifikasi 3" type="java.lang.String"/>
-                <Column editable="false" title="Modifikasi 4" type="java.lang.String"/>
+                <Column editable="true" title="Modifikasi 1" type="java.lang.String"/>
+                <Column editable="true" title="Modifikasi 2" type="java.lang.String"/>
+                <Column editable="true" title="Modifikasi 3" type="java.lang.String"/>
+                <Column editable="true" title="Modifikasi 4" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
