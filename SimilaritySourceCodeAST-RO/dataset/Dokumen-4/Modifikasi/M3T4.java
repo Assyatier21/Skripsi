@@ -6,7 +6,18 @@ import java.util.Scanner;
 public class M3T4 {
 	private static int number;
     public static String reversedNum;
-
+    
+    private static String reverse(int number)
+    {
+        String res = "";
+    	while (number != 0) {
+			int remainder = number % 10;
+            res += remainder;
+			number = number / 10;
+		}
+		System.out.println();
+        return res;
+	}
     public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
         System.out.println("----[ Reverse Number Program ]----");
@@ -22,16 +33,6 @@ public class M3T4 {
 
 	}
 
-	private static String reverse(int number)
-    {
-        String res = "";
-    	while (number != 0) {
-			int remainder = number % 10;
-            res += remainder;
-			number = number / 10;
-		}
-		System.out.println();
-        return res;
-	}
+	
 
 }

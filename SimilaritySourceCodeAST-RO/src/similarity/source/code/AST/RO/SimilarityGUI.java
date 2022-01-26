@@ -376,6 +376,8 @@ public class SimilarityGUI extends javax.swing.JFrame {
             PreProcessingAllText += "------------------------------------------------------------------------------------\n";
             
             rawSC[0] = next.tokenizerJava(rawSC[0]);
+//            System.out.println("rawSC [ Main ]" + "\n"+rawSC[0]);
+                    
             TokenizingAllText += "\n------------------------MAIN DOCUMENT-------------------------\n";
             TokenizingAllText += rawSC[0];
             TokenizingAllText += "\n--------------------------------------------------------------\n";
@@ -393,6 +395,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
                     PreProcessingAllText += "------------------------------------------------------------------------------------\n";
                     
                     rawSC[j] = next.tokenizerJava(rawSC[j]);
+//                    System.out.println("rawSC ["+j + "] : \n" + rawSC[j]);
                     TokenizingAllText += "\n------------------------DUPLICATED-" + j + "--------------------------\n";
                     TokenizingAllText += rawSC[j];
                     TokenizingAllText += "\n--------------------------------------------------------------\n";

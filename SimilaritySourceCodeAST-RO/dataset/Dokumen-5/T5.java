@@ -11,7 +11,7 @@
             }
 
             // Display the array
-            for (int i = 9; i >= 0; i--) {
+            for (int i = 0; i <= 9; i++) {
                 System.out.println(num[i]);
             }
         }	
@@ -21,4 +21,4 @@
     // M1   : 115 Token
     // M1T5 : 28 Token Modified 
     // M2T5 : 56 Token Modified
-    // M3T5 : 92 Token Modified
+    // M3T5 : 152 Token Modified

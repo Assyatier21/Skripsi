@@ -4,7 +4,9 @@
 import java.util.Scanner;
 
 public class M3T5 {
-    
+    static Scanner input = new Scanner(System.in);
+    private static int length = 0;
+
     public static void display(int[] num)
     {
         System.out.println("Displaying Number of Array:");
@@ -15,23 +17,21 @@ public class M3T5 {
     private static int[] inputArr(int[] num)
     {
         int k = 0;
-        try{
             while(k < num.length)
             {
+                String number = "";
                 System.out.print("Read a number: ");
-                num[k] = input.nextInt();
+                number = input.next();
+                num[k] = Integer.valueOf(number);
                 k++;
-
             }
-        }
-        catch(Exception e)
-        {
-            System.out.println("Wrong Input!");
-        }
         return num; 
     }
 	public static void main(String[] args) {
-		int[] num = new int[10];
+		System.out.print("Enter length of Array:" );
+        length = input.nextInt();
+
+        int[] num = new int[length];
 		num = inputArr(num);
         display(num);
 	}	

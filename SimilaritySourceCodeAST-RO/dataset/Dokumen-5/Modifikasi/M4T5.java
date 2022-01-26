@@ -2,7 +2,7 @@
 // Percentage Change : 0%
 
     public class M4T5 {
-        public static void main(String[] args) {
+       public static void main(String[] args) {
             java.util.Scanner input = new java.util.Scanner(System.in);
             int[] num = new int[10];
 
@@ -14,7 +14,7 @@
             }
 
             // Display the array
-            for (int i = 9; i >= 0; i--) {
+            for (int i = 0; i <= 9; i++) {
                 System.out.println(num[i]);
             }
         }	
