@@ -8,9 +8,9 @@ public class ROalgorithm
     public final double similarity(final String s1, final String s2)
     {
         if (s1 == null) 
-            throw new NullPointerException("s1 must not be null");
+            throw new NullPointerException("Main Code must not be null");
         if (s2 == null) 
-            throw new NullPointerException("s2 must not be null");
+            throw new NullPointerException("Duplicated Code must not be null");
         if (s1.equals(s2)) 
             return 1.0d;
 
@@ -28,20 +28,24 @@ public class ROalgorithm
     {
         List<String> list = new ArrayList<String>();
         String match = frontMaxMatch(s1, s2);
+        System.out.println("Match : " + match);
 
         if (match.length() > 0)
         {
             String frontsource = s1.substring(0, s1.indexOf(match));
+            System.out.println("frontSource : " + frontsource);
             String fronttarget = s2.substring(0, s2.indexOf(match));
+            System.out.println("frontTarget : " + fronttarget);
             // Get Longest Substring Left of Anchor
             List<String> frontqueue = getMatchList(frontsource, fronttarget);
-
+            
             String endsource = s1.substring(s1.indexOf(match) + match.length());
+            System.out.println("endSource : " + endsource);
             String endtarget = s2.substring(s2.indexOf(match) + match.length());
+            System.out.println("endTarget : " + endtarget);
             // Get Longest Substring Right of Anchor
-           
             List<String> endqueue = getMatchList(endsource, endtarget);
-
+            
             list.add(match);
             list.addAll(frontqueue);
             list.addAll(endqueue);
@@ -68,7 +72,6 @@ public class ROalgorithm
             }
         }
         
-
         return longestsubstring;
     }
 }

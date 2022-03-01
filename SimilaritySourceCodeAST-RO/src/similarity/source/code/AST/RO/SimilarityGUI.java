@@ -327,6 +327,12 @@ public class SimilarityGUI extends javax.swing.JFrame {
         int i = 1;
         int k = 0;
         
+        for (int j = 1; j < percentage.length; j++) 
+        {
+            percentage[j] = 0; 
+            percentageWOAST[j] = 0;
+        }
+        
         // Reading File
         try
         {            
@@ -359,6 +365,7 @@ public class SimilarityGUI extends javax.swing.JFrame {
                 }
             }
             
+            // Instansiasi Objek
             prepText process = new prepText();
             tokenizeCode next = new tokenizeCode();
             ROalgorithm algorithm = new ROalgorithm();
@@ -371,12 +378,12 @@ public class SimilarityGUI extends javax.swing.JFrame {
             rawSC[0] = process.ppTextwithAST(rawSC[0]);
             rawSCWOAST[0] = process.ppTextnoAST(rawSCWOAST[0]);
             
+            
             PreProcessingAllText += "\n--------------------------------MAIN DOCUMENT--------------------------------------\n";
             PreProcessingAllText += rawSC[0];
             PreProcessingAllText += "------------------------------------------------------------------------------------\n";
             
             rawSC[0] = next.tokenizerJava(rawSC[0]);
-//            System.out.println("rawSC [ Main ]" + "\n"+rawSC[0]);
                     
             TokenizingAllText += "\n------------------------MAIN DOCUMENT-------------------------\n";
             TokenizingAllText += rawSC[0];
@@ -395,7 +402,6 @@ public class SimilarityGUI extends javax.swing.JFrame {
                     PreProcessingAllText += "------------------------------------------------------------------------------------\n";
                     
                     rawSC[j] = next.tokenizerJava(rawSC[j]);
-//                    System.out.println("rawSC ["+j + "] : \n" + rawSC[j]);
                     TokenizingAllText += "\n------------------------DUPLICATED-" + j + "--------------------------\n";
                     TokenizingAllText += rawSC[j];
                     TokenizingAllText += "\n--------------------------------------------------------------\n";
@@ -415,6 +421,8 @@ public class SimilarityGUI extends javax.swing.JFrame {
         {
             e.printStackTrace();
         }
+        
+        // Set Pre-processing and Tokenizing Text Into Layer
         preprocessedSC.setText(PreProcessingAllText);
         tokenizedSC.setText(TokenizingAllText);
         

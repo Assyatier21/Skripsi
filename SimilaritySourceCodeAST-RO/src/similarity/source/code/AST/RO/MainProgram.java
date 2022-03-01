@@ -12,59 +12,27 @@ public class MainProgram
     public static void main(String[] args) throws Exception
     {
         String mainDoc =
-        "import java.util.Scanner;\n" +
-        "\n" +
-        "public class T1 {\n" +
-        "	public static void main(String[] args) {\n" +
-        "		Scanner input = new Scanner(System.in);\n" +
-        "		System.out.print(\"Enter the radius and length of a cylinder: \");\n" +
-        "		double radius = input.nextDouble();\n" +
-        "		double length = input.nextDouble();\n" +
-        "\n" +
-        "		double area = radius * radius * 3.14159;\n" +
-        "		double volume = area * length;\n" +
-        "\n" +
-        "		System.out.println(\"The area is \" + area);\n" +
-        "		System.out.println(\"The volume of the cylinder is \" + volume);\n" +
-        "	}\n" +
-        "\n" +
-        "}";
+        "Matematika Adalah Mata Pelajaran Yang Menyusahkan";
        
         String duplicateDoc =
-        "// Modification - 1\n" +
-        "// Percentage Change : 25%\n" +
-        "\n" +
-        "import java.util.Scanner;\n" +
-        "\n" +
-        "public class M1T1 {\n" +
-        "	public static void main(String[] args) {\n" +
-        "		Scanner in = new Scanner(System.in);\n" +
-        "\n" +
-        "		double radius = in.nextDouble();\n" +
-        "		double length = in.nextDouble();\n" +
-        "\n" +
-        "		System.out.println(\"Surface Area : \" + (radius * radius * 3.14159));\n" +
-        "		System.out.println(\"Volume of the cylinder : \" + (radius * radius * 3.14159 * length));\n" +
-        "	}\n" +
-        "\n" +
-        "}";
+        "Matematika Bukanlah Mata Pelajaran Yang Menyenangkan";
         
         try
         {
             prepText process = new prepText();
-            String mainDocFiltered = process.ppTextwithAST(mainDoc);
-            String duplicateDocFiltered = process.ppTextwithAST(duplicateDoc);
+            String mainDocFiltered = process.ppTextnoAST(mainDoc);
+            String duplicateDocFiltered = process.ppTextnoAST(duplicateDoc);
 
-            tokenizeCode next = new tokenizeCode();
-            String mainDocTokenized = next.tokenizerJava(mainDocFiltered);
-            String duplicateDocTokenized = next.tokenizerJava(duplicateDocFiltered);
+//            tokenizeCode next = new tokenizeCode();
+//            String mainDocTokenized = next.tokenizerJava(mainDocFiltered);
+//            String duplicateDocTokenized = next.tokenizerJava(duplicateDocFiltered);
 
-            System.out.println("Main Doc Token :\n" + mainDocTokenized);
-            System.out.println("");
-            System.out.println("Duplicate Doc Token:\n" + duplicateDocTokenized);
-            System.out.println("");
+//            System.out.println("Main Doc Token :\n" + mainDocTokenized);
+//            System.out.println("");
+//            System.out.println("Duplicate Doc Token:\n" + duplicateDocTokenized);
+//            System.out.println("");
             ROalgorithm algorithm = new ROalgorithm();
-            double percentage = algorithm.similarity(mainDocTokenized, duplicateDocTokenized);
+            double percentage = algorithm.similarity(mainDocFiltered, duplicateDocFiltered);
             System.out.println("Percentage of Similarity : " + percentage);
             
             
