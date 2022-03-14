@@ -26,6 +26,7 @@
 // Generated from Java8.g4 by ANTLR 4.5.1
 package similarity.source.code.AST.RO;
 
+import similarity.source.code.AST.RO.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.RuleContext;

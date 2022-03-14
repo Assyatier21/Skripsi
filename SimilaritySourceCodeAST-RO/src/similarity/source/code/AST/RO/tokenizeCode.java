@@ -20,7 +20,7 @@ public class tokenizeCode
           tokenList = lexer.getAllTokens();
           String tokenAll = "";
           for(Token token : tokenList){
-          //  System.out.println(token.getStopIndex()+ " : " + token +" - " + lexer.getVocabulary().getSymbolicName(token.getType()));
+            System.out.println(token.getStopIndex()+ " : " + token +" - " + lexer.getVocabulary().getSymbolicName(token.getType()));
               tokenAll += String.valueOf(token.getType());
           }
           return tokenAll;
