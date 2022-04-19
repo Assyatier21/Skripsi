@@ -2,18 +2,18 @@ package similarity.source.code.AST.RO;
 
 public class prepText 
 {
-    public String ppTextnoAST(String document)
+    public String ppTextnoAST(String code)
     {
-        document = document.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","");
-        document = document.replaceAll("(?m)^[ \t]*\r?\n", "");
-        document = document.replace(" ", "");
-        return document;
+        code = code.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","");
+        code = code.replaceAll("(?m)^[ \t]*\r?\n", "");
+        code = code.replace(" ", "");
+        return code;
     }
-    public String ppTextwithAST(String document)
+    public String ppTextwithAST(String code)
     {
-        document = document.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","");
-        document = document.replaceAll("(?m)^[ \t]*\r?\n", "");
-        return document;
+        code = code.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","");
+        code = code.replaceAll("(?m)^[ \t]*\r?\n", "");
+        return code;
     }
     
 }
