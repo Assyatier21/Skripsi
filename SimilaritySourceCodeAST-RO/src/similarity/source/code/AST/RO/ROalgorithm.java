@@ -28,21 +28,18 @@ public class ROalgorithm
     {
         List<String> list = new ArrayList<String>();
         String match = frontMaxMatch(s1, s2);
-//        System.out.println("Match : " + match);
 
         if (match.length() > 0)
         {
             String frontsource = s1.substring(0, s1.indexOf(match));
-//            System.out.println("frontSource : " + frontsource);
             String fronttarget = s2.substring(0, s2.indexOf(match));
-//            System.out.println("frontTarget : " + fronttarget);
+
             // Get Longest Substring Left of Anchor
             List<String> frontqueue = getMatchList(frontsource, fronttarget);
             
             String endsource = s1.substring(s1.indexOf(match) + match.length());
-//            System.out.println("endSource : " + endsource);
             String endtarget = s2.substring(s2.indexOf(match) + match.length());
-//            System.out.println("endTarget : " + endtarget);
+
             // Get Longest Substring Right of Anchor
             List<String> endqueue = getMatchList(endsource, endtarget);
             
