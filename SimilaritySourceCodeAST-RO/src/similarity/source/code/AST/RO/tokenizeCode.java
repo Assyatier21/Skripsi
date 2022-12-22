@@ -16,11 +16,14 @@ public class tokenizeCode
     {
           ANTLRInputStream in = new ANTLRInputStream(code);
           Java8Lexer lexer = new Java8Lexer(in);
+        
           List<? extends Token> tokenList = new ArrayList<>();
           tokenList = lexer.getAllTokens();
+         
           String tokenAll = "";
+          
           for(Token token : tokenList){
-            System.out.println( token);
+              System.out.println( token);
               tokenAll += String.valueOf(token.getType());
           }
           return tokenAll;
